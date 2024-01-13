@@ -1,5 +1,6 @@
 package med.voll.api.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import med.voll.api.domain.paciente.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import static med.voll.api.util.AplicationConstants.API_PACIENTES_PATH;
 
 @RestController
 @RequestMapping(API_PACIENTES_PATH)
+@SecurityRequirement(name = "bearer-key")
 public class PacienteController {
 
     @Autowired

@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static med.voll.api.util.AplicationConstants.API_AUTH_PATH;
+import static med.voll.api.util.AplicationConstants.SWAGGER_PATHS;
 
 @Configuration
 @EnableWebSecurity
@@ -31,6 +32,7 @@ public class SecurityConfiguration {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authorizeHttpRequests()
                 .antMatchers(API_AUTH_PATH).permitAll()
+                .antMatchers(SWAGGER_PATHS).permitAll()
                 .anyRequest().authenticated()
                 .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

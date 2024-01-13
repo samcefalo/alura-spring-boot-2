@@ -26,6 +26,11 @@ public class ErrorHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
+    @ExceptionHandler(ValidacaoException.class)
+    public ResponseEntity<String> handleValidacao(ValidacaoException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
     public record ValidationErrorData(
             String field,
             String message) {
